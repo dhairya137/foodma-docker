@@ -25,7 +25,15 @@ RUN curl -o ioncube.tar.gz http://downloads3.ioncube.com/loader_downloads/ioncub
     && rm -Rf ioncube.tar.gz ioncube \
     && docker-php-ext-enable ioncube_loader_lin_7.3
 
-# configure this also
+# RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# WORKDIR /app
+# COPY composer.json .
+# RUN composer install --no-scripts
+# COPY . . 
+
+# CMD php artisan serve --host=0.0.0.0 --port=80
+
+# Configure this also
 # RUN chown -R www-data.www-data storage
 # RUN chown -R www-data.www-data vendor
 # RUN sudo chown -R www-data.www-data boostrap/cache
