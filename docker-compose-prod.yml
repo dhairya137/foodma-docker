@@ -5,7 +5,7 @@ networks:
 
 services:
   nginx:
-    image: nginx:stable-alpine
+    image: dhairya137/foodma-codecanyon:nginx
     container_name: nginx
     ports:
       - "8088:80"
@@ -20,7 +20,7 @@ services:
       - laravel
 
   mysql:
-    image: mysql:5.7
+    image: dhairya137/foodma-codecanyon:mysql
     container_name: mysql
     restart: unless-stopped
     tty: true
