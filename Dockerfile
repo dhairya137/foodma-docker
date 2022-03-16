@@ -25,12 +25,19 @@ RUN curl -o ioncube.tar.gz http://downloads3.ioncube.com/loader_downloads/ioncub
     && rm -Rf ioncube.tar.gz ioncube \
     && docker-php-ext-enable ioncube_loader_lin_7.3
 
-# RUN chown -R www-data.www-data storage
-# RUN sudo chown -R www-data.www-data boostrap/cache
-# RUN cd /tmp \
-# 	&& curl -o ioncube.tar.gz http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz \
-#     && tar -xvvzf ioncube.tar.gz -C /usr/local \
-#     # && rm -Rf ioncube.tar.gz ioncube \
-#     && echo "zend_extension=/usr/local/lib/php/extensions/no-debug-non-zts-20151012/ioncube_loader_lin_7.3.so" > /usr/local/etc/php/conf.d/00_docker-php-ext-ioncube_loader_lin_7.3.ini
+# RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# WORKDIR /app
+# COPY composer.json .
+# RUN composer install --no-scripts
+# COPY . . 
 
-# # use own method for ioncube
+# CMD php artisan serve --host=0.0.0.0 --port=80
+
+# Configure this also
+# RUN chown -R www-data.www-data storage
+# RUN chown -R www-data.www-data vendor
+# RUN sudo chown -R www-data.www-data boostrap/cache
+
+# php artisan migrate:fresh 
+# php artisan key:generate 
+
