@@ -32,6 +32,7 @@ RUN curl -o ioncube.tar.gz http://downloads3.ioncube.com/loader_downloads/ioncub
 # COPY . . 
 
 # CMD php artisan serve --host=0.0.0.0 --port=80
+# Run this command after builing this container - docker run -p 8081:80 <image_name>
 
 # Configure this also
 # RUN chown -R www-data.www-data storage
